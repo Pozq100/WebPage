@@ -57,6 +57,9 @@
     <script>
         var chartTemperatue;
         var chartHumidity;
+        var chartEC
+        var chartPH
+        var chartLight
 
         function requestData()
         {
@@ -72,20 +75,49 @@
                 // Humidity
                 var seriesHumidity = chartHumidity.series[0],
                     shiftHumidity = seriesTemperature.data.length > 20;
+/*
+                // EC
+                var seriesEC = chartEC.series[0],
+                    shiftEC = seriesTemperature.data.length > 20;
 
+                // PH
+                var seriesPH = chartPH.series[0],
+                    shiftPH = seriesTemperature.data.length > 20;
+
+                // Light
+                var seriesLight = chartLight.series[0],
+                    shiftLight = seriesTemperature.data.length > 20;
+*/
                 // Add the Point
-                // Time Temperature\
+                // Time Temperature
                 var data1 = [];
                 data1.push(result[0]);
                 data1.push(result[1]);
-
 
                 // Add the Point
                 // Time Humidity
                 var data2 = [];
                 data2.push(result[0]);
                 data2.push(result[2]);
+/*
+                // Add the Point
+                // Time EC
+                var data3 = [];
+                data3.push(result[0]);
+                data3.push(result[3]);
 
+                // Add the Point
+                // Time PH
+                var data4 = [];
+                data4.push(result[0]);
+                data4.push(result[4]);
+
+                // Add the Point
+                // Time Light
+                var data5 = [];
+                data5.push(result[0]);
+                data5.push(result[5]);
+*/
 
                 chartTemperatue.series[0].addPoint(data1, true, shiftTemperature);
                 chartHumidity.series[0].addPoint(data2, true, shiftHumidity);
