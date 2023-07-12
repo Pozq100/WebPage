@@ -152,11 +152,9 @@
                 chartPH.series[0].addPoint(data4, true, shiftPH)
                 chartLight.series[0].addPoint(data5, true, shiftLight)
 
-
-                // call it again after one second
-                setTimeout(requestData, 2000);
-
             });
+            // call it again after one second
+            setTimeout(requestData, 2000);
         }
 
         $(document).ready(function()
@@ -166,10 +164,7 @@
                 chart:
                     {
                     renderTo: 'data-temperature',
-                    defaultSeriesType: 'area',
-                    events: {
-                        load: requestData
-                            }
+                    defaultSeriesType: 'area'
                     },
                 title:
                     {
@@ -201,10 +196,7 @@
                 chart:
                     {
                         renderTo: 'data-humidity',
-                        defaultSeriesType: 'area',
-                        events: {
-                            load: requestData
-                        }
+                        defaultSeriesType: 'area'
                     },
                 title:
                     {
@@ -235,10 +227,7 @@
                 chart:
                     {
                         renderTo: 'data-EC',
-                        defaultSeriesType: 'area',
-                        events: {
-                            load: requestData
-                        }
+                        defaultSeriesType: 'area'
                     },
                 title:
                     {
@@ -269,10 +258,7 @@
                 chart:
                     {
                         renderTo: 'data-PH',
-                        defaultSeriesType: 'area',
-                        events: {
-                            load: requestData
-                        }
+                        defaultSeriesType: 'area'
                     },
                 title:
                     {
@@ -303,10 +289,7 @@
                 chart:
                     {
                         renderTo: 'data-Light',
-                        defaultSeriesType: 'area',
-                        events: {
-                            load: requestData
-                        }
+                        defaultSeriesType: 'area'
                     },
                 title:
                     {
@@ -331,7 +314,7 @@
                     data: []
                 }]
             });
-
+            setTimeout(requestData, 2000)
 
         });
     </script>
