@@ -19,12 +19,12 @@ def data():
 
     Temperature = round(rng.uniform(20, 40), 1)
     Humidity = round(rng.uniform(0, 100), 1)
-    """EC_level = round(rng.uniform(0, 1), 0)
+    EC_level = round(rng.uniform(0, 1), 0)
     pH_level = round(rng.uniform(0, 14), 0)
-    light_level = round(rng.uniform(0, 1023), 0)"""
+    light_level = round(rng.uniform(0, 1023), 0)
     current_time = time() + 28800000
 
-    data = [current_time * 1000, Temperature, Humidity] #, EC_level, pH_level, light_level
+    data = [current_time * 1000, Temperature, Humidity, EC_level, pH_level, light_level]
 
     response = make_response(json.dumps(data))
 
