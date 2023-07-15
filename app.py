@@ -70,9 +70,8 @@ def data():
 @app.route('/data_current', methods=["GET", "POST"])
 def data2():
     global line
-    line += 1
     current_time = (time() + 28800000) * 1000
-    data = [current_time] + DataGeneration.ReadLine(csvfile, line)
+    data = [current_time] + DataGeneration.ReadLine(csvfile, line - 1)
     response = make_response(json.dumps(data))
 
     response.content_type = 'application/json'
