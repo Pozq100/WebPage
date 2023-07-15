@@ -6,6 +6,7 @@ from time import time
 import DataGeneration
 from flask import Flask, render_template, make_response
 app = Flask(__name__)
+app.static_folder = 'static'
 csvfile = "Alldatas.csv"
 line = 3
 @app.route('/', methods=["GET", "POST"])
