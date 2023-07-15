@@ -41,3 +41,10 @@ def ReadLine(csvfile,line):
         for i in next(reader):
             data.append(float(i))
     return data
+
+def main():
+    for _ in range(20):
+        DataGeneration()
+
+if __name__ == "__main__":
+    main()

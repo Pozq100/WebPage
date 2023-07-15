@@ -1,0 +1,51 @@
+body{     /*Change Body Color*/
+  margin: 0px;
+  padding: 0px;
+  background-color: #1e1f22;
+}
+#graph {  /*Change Body Color For All Graphs --> takes priority*/
+  margin: 0px;
+  padding: 0px;
+  background-color: #1e1f22;
+}
+.page-wrapper {
+  background-color: #2b2d31;
+  margin-top: 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: -50px;
+  border: 1px solid #333;
+  padding: 10px;
+  border-radius: 7px;
+  padding-bottom: 15%;
+}
+.page-wrapper-graph {
+  background-color: #2b2d31;
+  margin-top: 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: -50px;
+  border: 1px solid #333;
+  padding: 10px;
+  border-radius: 7px;
+}
+.circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
+    font-size: 20px;
+    color: #fff;
+    line-height: 100px;
+    background: rgb(0, 255, 0);
+    margin-left: 10px;
+  }  
+button {
+    border-radius: 7px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.col-sm-2 > span,
+.col-sm-2 > p {
+  display: inline-block;
+  color: white;
+}
