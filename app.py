@@ -1,12 +1,12 @@
 from flask import Flask,render_template,url_for,request,redirect, make_response
 import random as rng
 import json
+import csv
 from time import time
 from random import random
 from flask import Flask, render_template, make_response
 app = Flask(__name__)
-
-
+csvfile = "Alldatas.csv"
 @app.route('/', methods=["GET", "POST"])
 def main():
     return render_template('test_index.html')
@@ -46,7 +46,7 @@ def data():
     pH_level = round(rng.uniform(0, 14), 0)
     light_level = round(rng.uniform(0, 1023), 0)
     current_time = time() + 28800000
-
+    WriteData([Temperature,Humidity,EC_level,pH_level,light_level])
     data = [current_time * 1000, Temperature, Humidity, EC_level, pH_level, light_level]
 
     response = make_response(json.dumps(data))
@@ -55,6 +55,10 @@ def data():
 
     return response
 
-
+def WriteData(Datas):
+    with open(csvfile, 'a', newline="") as Data:
+        writer = csv.writer(Data)
+        writer.writerow(Datas)
+    return
 if __name__ == "__main__":
     app.run(debug=True)
