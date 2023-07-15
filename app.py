@@ -55,27 +55,35 @@ def data():
     # Data Format
     # [TIME, Temperature, Humidity]
     global line
-    current_time = (time() + 28800000) * 1000
     ListofDatas = DataGeneration.ReadLine(csvfile,line)
     if ListofDatas:
         line += 1
-        data = [current_time] + ListofDatas
+        data = ListofDatas
         response = make_response(json.dumps(data))
-        response.content_type = 'application/json'
-        return response
     else:
-        response = make_response(json.dumps(0))
-        response.content_type = 'application/json'
-        return response
-@app.route('/data_current', methods=["GET", "POST"])
-def data2():
-    global line
-    current_time = (time() + 28800000) * 1000
-    data = [current_time] + DataGeneration.ReadLine(csvfile, line - 1)
-    response = make_response(json.dumps(data))
-
+        response = make_response(json.dumps([]))
     response.content_type = 'application/json'
+    return response
 
+def get_latest_data():
+    with open(csvfile, "r") as file:
+        reader = csv.reader(file)
+        data = list(reader)
+        if len(data) > 1:
+            latest_row = data[-1]
+            return latest_row
+        else:
+            return None
+
+@app.route('/data_current', methods=["GET"])
+def data_current():
+    latest_data = get_latest_data()
+    if latest_data:
+        data = latest_data
+        response = make_response(json.dumps(data))
+    else:
+        response = make_response(json.dumps([]))
+    response.content_type = 'application/json'
     return response
 
 if __name__ == "__main__":
