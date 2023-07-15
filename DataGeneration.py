@@ -1,6 +1,8 @@
 import random as rng
 import csv
 import pandas as pd
+import time
+import app
 csvfile = "Alldatas.csv"
 
 def DataGeneration():
@@ -9,8 +11,9 @@ def DataGeneration():
     EC_level = round(rng.uniform(0, 1), 0)
     pH_level = round(rng.uniform(0, 14), 0)
     light_level = round(rng.uniform(0, 1023), 0)
-    WriteData([Temperature,Humidity,EC_level,pH_level,light_level])
-    return [Temperature,Humidity,EC_level,pH_level,light_level]
+    Time = (time.time() + 28800000) * 1000
+    WriteData([Time,Temperature,Humidity,EC_level,pH_level,light_level])
+    return [Time,Temperature,Humidity,EC_level,pH_level,light_level]
 
 def WriteData(Datas):
     with open(csvfile, 'a', newline="") as Data:
@@ -34,17 +37,6 @@ def ReadLine(csvfile,line):
         reader = csv.reader(csvfile)
         for _ in range(line - 1):
             next(reader)
-        try:
-            next(reader)
-        except StopIteration:
-            return False
         for i in next(reader):
-            data.append(float(i))
+            data.append(float(i))      
     return data
-
-def main():
-    for _ in range(20):
-        DataGeneration()
-
-if __name__ == "__main__":
-    main()
