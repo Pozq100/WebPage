@@ -1,10 +1,9 @@
 from flask import Flask,render_template,url_for,request,redirect, make_response
-import random as rng
 import json
 import csv
 import pandas as pd
 from time import time
-from random import random
+import DataGeneration
 from flask import Flask, render_template, make_response
 app = Flask(__name__)
 csvfile = "Alldatas.csv"
@@ -40,15 +39,9 @@ def light_html():
 def data():
     # Data Format
     # [TIME, Temperature, Humidity]
-
-    Temperature = round(rng.uniform(20, 40), 1)
-    Humidity = round(rng.uniform(0, 100), 1)
-    EC_level = round(rng.uniform(0, 1), 0)
-    pH_level = round(rng.uniform(0, 14), 0)
-    light_level = round(rng.uniform(0, 1023), 0)
-    current_time = time() + 28800000
-    WriteData([Temperature,Humidity,EC_level,pH_level,light_level])
-    data = [current_time * 1000, Temperature, Humidity, EC_level, pH_level, light_level]
+    current_time = (time() + 28800000) * 1000
+    WriteData(DataGeneration.DataGeneration())
+    data = [current_time] + DataGeneration.DataGeneration()
     print(ReadData(1))
     response = make_response(json.dumps(data))
 
