@@ -1,33 +1,35 @@
-var chartTemperature;
+var chartLight;
 
 function requestData() {
   // Ajax call to get the Data from Flask
   var requests = $.get("/data");
 
   var tm = requests.done(function (result) {
-    // Temperature
-    var seriesTemperature = chartTemperature.series[0],
-      shiftTemperature = seriesTemperature.data.length > 20;
+    // Light
+    var seriesLight = chartLight.series[0],
+      shiftLight = seriesLight.data.length > 20;
 
     // Add the Point
-    // Time Temperature
-    var data1 = [];
-    data1.push(result[0]);
-    data1.push(result[1]);
-    chartTemperature.series[0].addPoint(data1, true, shiftTemperature);
+    // Time Light
+    var data5 = [];
+    data5.push(result[0]);
+    data5.push(result[5]);
+
+    chartLight.series[0].addPoint(data5, true, shiftLight);
   });
+  // call it again after one second
   setTimeout(requestData, 500);
 }
 
 $(document).ready(function () {
-  // --------------Chart 1 ----------------------------
-  chartTemperature = new Highcharts.Chart({
+  // --------------Chart 5 -----------------------
+  chartLight = new Highcharts.Chart({
     chart: {
-      renderTo: "data-temperature",
+      renderTo: "data-Light",
       defaultSeriesType: "area",
     },
     title: {
-      text: 'Ambient Temperature ("Temperature" Readings)',
+      text: 'Ambient Lighting Intensity ("LDR" Readings)',
     },
     xAxis: {
       type: "datetime",
@@ -44,9 +46,8 @@ $(document).ready(function () {
     },
     series: [
       {
-        color: "#c23d23",
-        lineColor: "#303030",
-        name: "Temperature",
+        lineColor: "#1d82b8",
+        name: "Light Level",
         data: [],
       },
     ],
