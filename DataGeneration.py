@@ -1,5 +1,8 @@
 import random as rng
 import csv
+import pandas as pd
+csvfile = "Alldatas.csv"
+
 def DataGeneration():
     Temperature = round(rng.uniform(20, 40), 1)
     Humidity = round(rng.uniform(0, 100), 1)
