@@ -35,9 +35,8 @@ def ReadLine(csvfile,line):
         for _ in range(line - 1):
             next(reader)
         try:
-            next(reader)
+            for i in next(reader):
+                data.append(float(i))
         except StopIteration:
             return False
-        for i in next(reader):
-            data.append(float(i))
     return data
