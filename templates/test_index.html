@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>  
-        <meta charset="UTF-8">
-        <title>Test</title>
-        <!--Style for circle -->
+<head>  
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Style for circle -->
     <style>
         .circle {
             width:10px;
@@ -19,98 +22,74 @@
           display: inline-block;
         }
     </style>
-    </head>
-    <body>
-        <div class="jumbotron">
-            <h1 class="text-center text-white">Welcome to Sensor Visualization </h1>
-        </div>
-        <br>
-        <br>
-    
-        <style>
-    
-            .jumbotron{
-                widows: 150px;
-                height: 220px;
-                justify-content: center;
-            }
-    
-            .row{
-                justify-content: center;
-            }
-    
-    
-        </style>
-        <!--Creating the circle -->
-        <div class="row">
-            <div class="col-sm-2"> <span><div class="circle"></div></span>
-                <p>System Running</p>
-            </div>
-        </div>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1 class="text-center text-white" id="title">Welcome to DevOps :D</h1>
+    </div>
+    <br>
+    <br>
 
-        <form action="/index.html">
-            <button type="submit">Test Button</button>
-        </form>
-        <form action="/temperature.html">
-            <button type="submit">Temperature Button</button>
-        </form>
-        <form action="/humidity.html">
-            <button type="submit">Humidity Button</button>
-        </form>
-        <form action="/ec.html">
-            <button type="submit">EC Button</button>
-        </form>
-        <form action="/ph.html">
-            <button type="submit">PH Button</button>
-        </form>
-        <form action="/light.html">
-            <button type="submit">Light Button</button>
-        </form>
-        <form action="/">
-            <button type="submit">What</button>
-        </form>
-        <script>
-            class Image{
-        
-                constructor(imgUrl, size)
-                {
-                    this.imgUrl=imgUrl;
-                    this.size=size;
-                }
-        
-                backgroundImage()
-                {
-                    console.log("inside function ")
-                    // Select the Image
-                    var img = document.querySelector(".jumbotron");
-        
-                    // create Css Text
-                    var text = "margin:auto;"+
-                        "background-image: url("+this.imgUrl+");" +
-                        "background-size:cover;"+
-                        "opacity:1;"+
-                        "background-blend-mode: darken;"+
-                        "height: "+ this.size + "vh;";
-        
-                    img.style.cssText =  text;
-                }
-        
-                centerTitle()
-                {
-                    /*
-                        Center the Title
-                     */
-                    var t1 = document.querySelector("#title");
-                    t1.classList.add("text-white");
-                    t1.classList.add("text-center");
-                    t1.classList.add("display-3");
-                }
+    <!-- Creating the circle -->
+    <div class="row">
+        <div class="col-sm-2"> <span><div class="circle"></div></span>
+            <p>System Running</p>
+        </div>
+    </div>
+
+    <form action="/index.html">
+        <button type="submit">Test Button</button>
+    </form>
+    <form action="/temperature.html">
+        <button type="submit">Temperature Button</button>
+    </form>
+    <form action="/humidity.html">
+        <button type="submit">Humidity Button</button>
+    </form>
+    <form action="/ec.html">
+        <button type="submit">EC Button</button>
+    </form>
+    <form action="/ph.html">
+        <button type="submit">PH Button</button>
+    </form>
+    <form action="/light.html">
+        <button type="submit">Light Button</button>
+    </form>
+
+    <!-- JavaScript -->
+    <script>
+        class CustomImage {
+            constructor(imgUrl, size) {
+                this.imgUrl = imgUrl;
+                this.size = size;
             }
-            const imgUrl = 'https://media3.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif'
-            const size = "50";
-            var obj = new Image(imgUrl, size);
-            obj.backgroundImage();
-            obj.centerTitle();
-        </script>
-    </body>
+
+            backgroundImage() {
+                var img = document.querySelector(".jumbotron");
+                var text =
+                    "margin:auto;" +
+                    "background-image: url(" + this.imgUrl + ");" +
+                    "background-size: cover;" +
+                    "opacity: 1;" +
+                    "background-blend-mode: darken;" +
+                    "height: " + this.size + "vh;";
+
+                img.style.cssText = text;
+            }
+
+            centerTitle() {
+                var t1 = document.querySelector("#title");
+                t1.classList.add("text-white");
+                t1.classList.add("text-center");
+                t1.classList.add("display-3");
+            }
+        }
+
+        const imgUrl = 'https://media3.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif';
+        const size = "50";
+        var obj = new CustomImage(imgUrl, size);
+        obj.backgroundImage();
+        obj.centerTitle();
+    </script>
+</body>
 </html>

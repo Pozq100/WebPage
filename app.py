@@ -72,5 +72,6 @@ def ReadData(index):
     }
     temp = pd.read_csv(csvfile, usecols=[datatype[index]])
     return temp
+
 if __name__ == "__main__":
     app.run(debug=True)
