@@ -85,12 +85,8 @@
                 var data1 = [];
                 data1.push(result[0]);
                 data1.push(result[1]);
-
-
                 chartTemperatue.series[0].addPoint(data1, true, shiftTemperature);
-
             });
-            // call it again after one second
             setTimeout(requestData, 500);
         }
 

@@ -7,47 +7,47 @@ import DataGeneration
 from flask import Flask, render_template, make_response
 app = Flask(__name__)
 csvfile = "Alldatas.csv"
-line = 2
+line = 3
 @app.route('/', methods=["GET", "POST"])
 def temp_html():
     global line
-    line = 2
+    line = 3
     return render_template('test_index.html')
 
 @app.route('/index.html')
 def index_html():
     global line
-    line = 2
+    line = 3
     return render_template('index.html')
 
 @app.route('/temperature.html')
 def temperature_html():
     global line
-    line = 2
+    line = 3
     return render_template('temperature.html')
 
 @app.route('/humidity.html')
 def humidity_html():
     global line
-    line = 2
+    line = 3
     return render_template('humidity.html')
 
 @app.route('/ec.html')
 def ec_html():
     global line
-    line = 2
+    line = 3
     return render_template('ec.html')
 
 @app.route('/ph.html')
 def ph_html():
     global line
-    line = 2
+    line = 3
     return render_template('ph.html')
 
 @app.route('/light.html')
 def light_html():
     global line
-    line = 2
+    line = 3
     return render_template('light.html')
 
 @app.route('/data', methods=["GET", "POST"])
@@ -55,18 +55,15 @@ def data():
     # Data Format
     # [TIME, Temperature, Humidity]
     global line
-    current_time = (time() + 28800000) * 1000
     ListofDatas = DataGeneration.ReadLine(csvfile,line)
     if ListofDatas:
         line += 1
-        data = [current_time] + ListofDatas
+        data = ListofDatas
         response = make_response(json.dumps(data))
-        response.content_type = 'application/json'
-        return response
     else:
-        response = make_response(json.dumps(0))
-        response.content_type = 'application/json'
-        return response
+        response = make_response(json.dumps([]))
+    response.content_type = 'application/json'
+    return response
 
 def get_latest_data():
     with open(csvfile, "r") as file:
@@ -82,8 +79,7 @@ def get_latest_data():
 def data_current():
     latest_data = get_latest_data()
     if latest_data:
-        current_time = int(time() * 1000)
-        data = [current_time] + latest_data
+        data = latest_data
         response = make_response(json.dumps(data))
     else:
         response = make_response(json.dumps([]))
