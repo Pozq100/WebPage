@@ -49,6 +49,7 @@ def light_html():
     global line
     line = 2
     return render_template('light.html')
+
 @app.route('/data', methods=["GET", "POST"])
 def data():
     # Data Format
@@ -62,5 +63,18 @@ def data():
     response.content_type = 'application/json'
 
     return response
+
+@app.route('/data_current', methods=["GET", "POST"])
+def data2():
+    global line
+    line += 1
+    current_time = (time() + 28800000) * 1000
+    data = [current_time] + DataGeneration.ReadLine(csvfile, line)
+    response = make_response(json.dumps(data))
+
+    response.content_type = 'application/json'
+
+    return response
+
 if __name__ == "__main__":
     app.run(debug=True)
