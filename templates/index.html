@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
 
-    <title>Automatic Gardening System</title>
+    <title>All Graphs</title>
 
     <!-- Bootstraps Java Scipts Links -->
     <link
@@ -41,7 +41,15 @@
     <script src="http://code.highcharts.com/highcharts-more.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
     <!--Style for circle -->
-    <style></style>
+    <style>
+      #all-graph-spacing-top {
+        margin-top: 10px;
+      }
+
+      #all-graph-spacing-bot {
+        margin-bottom: 10px;
+      }
+    </style>
   </head>
 
   <body id="graph">
@@ -53,36 +61,40 @@
       </div>
     </div>
     <form action="/">
-      <button type="submit">Back</button>
+      <button type="submit" id="b-btn-graphs">Back</button>
     </form>
     <div class="page-wrapper-graph">
-      <div class="container-fluid">
+      <div class="container-fluid" id="all-graph-spacing-top">
         <!-- Example row of columns -->
-        <div class="row">
+        <div class="row" id="index-graph">
           <div class="container-fluid" id="data-PH"></div>
         </div>
       </div>
+      <br />
       <div class="container-fluid">
         <!-- Example row of columns -->
-        <div class="row">
+        <div class="row" id="index-graph">
           <div class="container-fluid" id="data-temperature"></div>
         </div>
       </div>
+      <br />
       <div class="container-fluid">
         <!-- Example row of columns -->
-        <div class="row">
+        <div class="row" id="index-graph">
           <div class="container-fluid" id="data-humidity"></div>
         </div>
       </div>
+      <br />
       <div class="container-fluid">
         <!-- Example row of columns -->
-        <div class="row">
+        <div class="row" id="index-graph">
           <div class="container-fluid" id="data-Light"></div>
         </div>
       </div>
-      <div class="container-fluid">
+      <br />
+      <div class="container-fluid" id="all-graph-spacing-bot">
         <!-- Example row of columns -->
-        <div class="row">
+        <div class="row" id="index-graph">
           <div class="container-fluid" id="data-EC"></div>
         </div>
       </div>
