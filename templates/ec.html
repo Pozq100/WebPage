@@ -75,7 +75,7 @@
             {
                 // EC
                 var seriesEC = chartEC.series[0],
-                    shiftEC = seriesTemperature.data.length > 20;
+                    shiftEC = seriesEC.data.length > 20;
 
                 // Add the Point
                 // Time EC
@@ -122,6 +122,7 @@
                     data: []
                 }]
             });
+            setTimeout(requestData, 2000);
         });
     </script>
 

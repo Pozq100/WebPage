@@ -8,11 +8,11 @@ app = Flask(__name__)
 
 
 @app.route('/', methods=["GET", "POST"])
-def main():
+def temp_html():
     return render_template('test_index.html')
 
 @app.route('/index.html')
-def temp_html():
+def index_html():
     return render_template('index.html')
 
 @app.route('/temperature.html')

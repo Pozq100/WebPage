@@ -21,6 +21,7 @@
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/highcharts-more.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
+
     <!--Style for circle -->
     <style>
         .circle {
@@ -37,6 +38,7 @@
           display: inline-block;
         }
     </style>
+
 </head>
 
 <body>
@@ -46,9 +48,10 @@
             <p>System Running</p>
         </div>
     </div>
-    <br>
-    <br>
 
+
+    <br>
+    <br>
     <form action="/">
         <button type="submit">Back</button>
     </form>
@@ -75,13 +78,14 @@
             {
                 // Humidity
                 var seriesHumidity = chartHumidity.series[0],
-                    shiftHumidity = seriesTemperature.data.length > 20;
+                    shiftHumidity = seriesHumidity.data.length > 20;
 
                 // Add the Point
                 // Time Humidity
                 var data2 = [];
                 data2.push(result[0]);
                 data2.push(result[2]);
+
 
                 chartHumidity.series[0].addPoint(data2, true, shiftHumidity);
 
@@ -117,12 +121,14 @@
                     }
                 },
                 series: [{
+
                     lineColor: '#1d82b8',
                     name: 'Humidity',
                     data: []
                 }]
             });
             setTimeout(requestData, 2000);
+
         });
     </script>
 
