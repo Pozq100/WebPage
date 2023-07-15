@@ -43,6 +43,10 @@
         height: 300px;
         width: auto;
       }
+
+      button {
+        border-radius: 25px;
+      }
     </style>
   </head>
   <body>
@@ -131,16 +135,18 @@
         var tm = requests.done(function (result) {
           if (result.length > 0) {
             document.getElementById("pHGraph").innerText =
-              "pH level of the solution ('Potentiometer' readings): " +
+              "Current pH level of the solution ('Potentiometer' readings): " +
               result[4];
             document.getElementById("TempGraph").innerText =
-              "Ambient Temperature ('Temperature' readings): " + result[1];
+              "Current Ambient Temperature ('Temperature' readings): " +
+              result[1];
             document.getElementById("HumidGraph").innerText =
-              "Relative Humidity ('Humidity' readings): " + result[2];
+              "Current Relative Humidity ('Humidity' readings): " + result[2];
             document.getElementById("LightGraph").innerText =
-              "Ambient lighting intensity ('LDR' readings): " + result[5];
+              "Current Ambient lighting intensity ('LDR' readings): " +
+              result[5];
             document.getElementById("ECGraph").innerText =
-              "EC level ('Moisture sensor' readings): " + result[3];
+              "Current EC level ('Moisture sensor' readings): " + result[3];
           } else {
             // Handle the case when data is not available
             document.getElementById("pHGraph").innerText = "No data available";
