@@ -131,15 +131,16 @@
         var tm = requests.done(function (result) {
           if (result.length > 0) {
             document.getElementById("pHGraph").innerText =
-              "Current pH Reading: " + result[4];
+              "pH level of the solution ('Potentiometer' readings): " +
+              result[4];
             document.getElementById("TempGraph").innerText =
-              "Current Temperature Reading: " + result[1];
+              "Ambient Temperature ('Temperature' readings): " + result[1];
             document.getElementById("HumidGraph").innerText =
-              "Current Humidity Reading: " + result[2];
+              "Relative Humidity ('Humidity' readings): " + result[2];
             document.getElementById("LightGraph").innerText =
-              "Current Light Level Reading: " + result[5];
+              "Ambient lighting intensity ('LDR' readings): " + result[5];
             document.getElementById("ECGraph").innerText =
-              "Current EC Level Reading: " + result[3];
+              "EC level ('Moisture sensor' readings): " + result[3];
           } else {
             // Handle the case when data is not available
             document.getElementById("pHGraph").innerText = "No data available";
