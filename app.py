@@ -8,11 +8,11 @@ from flask import Flask, render_template, make_response
 app = Flask(__name__)
 csvfile = "Alldatas.csv"
 @app.route('/', methods=["GET", "POST"])
-def main():
+def temp_html():
     return render_template('test_index.html')
 
 @app.route('/index.html')
-def temp_html():
+def index_html():
     return render_template('index.html')
 
 @app.route('/temperature.html')
