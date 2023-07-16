@@ -69,3 +69,17 @@ button {
   padding-left: 10px;
   padding-right: 10px;
 }
+.jumbotron {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 300px;
+  width: auto;
+  background-color: #2b2d31;
+  padding: 20px;
+  border: 0px solid #ccc;
+  border-radius: 5px;
+}
+.jumbotron img {
+  border-radius: 7px;
+}

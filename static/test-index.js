@@ -1,24 +1,12 @@
 class CustomImage {
-  constructor(imgUrl, size) {
-    this.imgUrl = imgUrl;
+  constructor(size) {
     this.size = size;
   }
 
   backgroundImage() {
-    var img = document.querySelector(".jumbotron");
-    var text =
-      "margin:auto;" +
-      "background-image: url(" +
-      this.imgUrl +
-      ");" +
-      "background-size: cover;" +
-      "opacity: 1;" +
-      "background-blend-mode: darken;" +
-      "height: " +
-      this.size +
-      "vh;";
-
-    img.style.cssText = text;
+    var img = document.querySelector(".jumbotron img");
+    img.style.width = "100%";
+    img.style.height = "100%";
   }
 
   centerTitle() {
@@ -29,10 +17,8 @@ class CustomImage {
   }
 }
 
-const imgUrl =
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Devops-toolchain.svg/640px-Devops-toolchain.svg.png";
 const size = "25";
-var obj = new CustomImage(imgUrl, size);
+var obj = new CustomImage(size);
 obj.backgroundImage();
 obj.centerTitle();
 

@@ -25,19 +25,6 @@
         font-weight: bold;
       }
 
-      .jumbotron {
-        background-image: "url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Devops-toolchain.svg/640px-Devops-toolchain.svg.png";
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        height: 300px;
-        width: auto;
-        background-color: #f8f9fa;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-      }
-
       #allGraphs {
         margin-top: 17px;
         font-size: 18px;
@@ -60,17 +47,10 @@
   </head>
   <body>
     <div class="jumbotron">
-      <h1 class="text-center text-black" id="title">
-        Automated Gardening System
-      </h1>
+      <img src="{{ url_for('static', filename='capture.png') }}" alt="Image" />
+      <h1 class="text-center text-black" id="title"></h1>
     </div>
-    -
-    <!--<img src="{{ url_for('static', filename='capture.png') }}" alt="Image" />-->
-
-    <br />
-    <br />
     <div class="page-wrapper">
-      -
       <!-- Creating the circle -->
       <div class="row" id="sys-running">
         <div class="col-sm-2">
