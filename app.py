@@ -1,7 +1,6 @@
 from flask import Flask,render_template,url_for,request,redirect, make_response
 import json
 import csv
-import pandas as pd
 from time import time
 import DataGeneration
 from flask import Flask, render_template, make_response
