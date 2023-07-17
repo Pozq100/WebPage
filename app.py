@@ -85,5 +85,10 @@ def data_current():
     response.content_type = 'application/json'
     return response
 
+@app.route('/switch-state', methods=["GET", "POST"])
+def switch_state():
+    print("hello")
+    return redirect('/')
+
 if __name__ == "__main__":
     app.run(debug=True)

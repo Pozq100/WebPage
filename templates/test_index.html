@@ -42,6 +42,14 @@
         border-bottom: 2px solid lightgray;
         margin-left: -10px;
         margin-right: -10px;
+        display: flex;
+        justify-content: space-between;
+      }
+      #switch {
+        font-size: 18px;
+        margin-top: 0px;
+        margin-right: 10px;
+        margin-left: auto;
       }
     </style>
   </head>
@@ -56,6 +64,11 @@
         <div class="col-sm-2">
           <span><div class="circle"></div></span>
           <p>System Running</p>
+        </div>
+        <div>
+          <form action="/switch-state" method="POST">
+            <button type="submit" id="switch">Toggle Switch</button>
+          </form>
         </div>
       </div>
 
