@@ -55,8 +55,11 @@
 
     <br />
     <br />
+    <br />
+    <br />
+    <br />
     <form action="/">
-      <button type="submit">Back</button>
+      <button type="submit" id="b-btn-graphs">Back</button>
     </form>
     <div class="page-wrapper-graph">
       <div class="container-fluid">
@@ -67,63 +70,6 @@
       </div>
     </div>
 
-    <script>
-      var chartEC;
-
-      function requestData() {
-        // Ajax call to get the Data from Flask
-        var requests = $.get("/data");
-
-        var tm = requests.done(function (result) {
-          // EC
-          var seriesEC = chartEC.series[0],
-            shiftEC = seriesEC.data.length > 20;
-
-          // Add the Point
-          // Time EC
-          var data3 = [];
-          data3.push(result[0]);
-          data3.push(result[3]);
-
-          chartEC.series[0].addPoint(data3, true, shiftEC);
-        });
-        // call it again after one second
-        setTimeout(requestData, 500);
-      }
-
-      $(document).ready(function () {
-        // --------------Chart 3 -----------------------
-        chartEC = new Highcharts.Chart({
-          chart: {
-            renderTo: "data-EC",
-            defaultSeriesType: "area",
-          },
-          title: {
-            text: 'EC Level ("Moisture Sensor" Readings)',
-          },
-          xAxis: {
-            type: "datetime",
-            tickPixelInterval: 150,
-            maxZoom: 20 * 1000,
-          },
-          yAxis: {
-            minPadding: 0.2,
-            maxPadding: 0.2,
-            title: {
-              text: "Value",
-              margin: 80,
-            },
-          },
-          series: [
-            {
-              lineColor: "#1d82b8",
-              name: "EC Level",
-              data: [],
-            },
-          ],
-        });
-        setTimeout(requestData, 500);
-      });
-    </script>
+    <script src="{{ url_for('static', filename='ec.js') }}"></script>
   </body>
 </html>

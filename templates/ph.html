@@ -55,8 +55,11 @@
 
     <br />
     <br />
+    <br />
+    <br />
+    <br />
     <form action="/">
-      <button type="submit">Back</button>
+      <button type="submit" id="b-btn-graphs">Back</button>
     </form>
     <div class="page-wrapper-graph">
       <div class="container-fluid">
@@ -67,64 +70,6 @@
       </div>
     </div>
 
-    <script>
-      var chartPH;
-
-      function requestData() {
-        // Ajax call to get the Data from Flask
-        var requests = $.get("/data");
-
-        var tm = requests.done(function (result) {
-          // PH
-          var seriesPH = chartPH.series[0],
-            shiftPH = seriesPH.data.length > 20;
-
-          // Add the Point
-          // Time PH
-          var data4 = [];
-          data4.push(result[0]);
-          data4.push(result[4]);
-
-          chartPH.series[0].addPoint(data4, true, shiftPH);
-        });
-        // call it again after one second
-        setTimeout(requestData, 500);
-      }
-
-      $(document).ready(function () {
-        // --------------Chart 4 -----------------------
-        chartPH = new Highcharts.Chart({
-          chart: {
-            renderTo: "data-PH",
-            defaultSeriesType: "area",
-          },
-          title: {
-            text: 'pH level of the solution ("Potentiometer" Readings)',
-          },
-          xAxis: {
-            type: "datetime",
-            tickPixelInterval: 150,
-            maxZoom: 20 * 1000,
-          },
-          yAxis: {
-            minPadding: 0.2,
-            maxPadding: 0.2,
-            title: {
-              text: "Value",
-              margin: 80,
-            },
-          },
-          series: [
-            {
-              lineColor: "#1d82b8",
-              name: "PH Level",
-              data: [],
-            },
-          ],
-        });
-
-        setTimeout(requestData, 500);
-      });
-    </script>
+    <script src="{{ url_for('static', filename='ph.js') }}"></script>
   </body>
 </html>

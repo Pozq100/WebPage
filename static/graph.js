@@ -1,4 +1,4 @@
-var chartTemperatue;
+var chartTemperature;
 var chartHumidity;
 var chartEC;
 var chartPH;
@@ -10,24 +10,24 @@ function requestData() {
 
   var tm = requests.done(function (result) {
     // Temperature
-    var seriesTemperature = chartTemperatue.series[0],
+    var seriesTemperature = chartTemperature.series[0],
       shiftTemperature = seriesTemperature.data.length > 20;
 
     // Humidity
     var seriesHumidity = chartHumidity.series[0],
-      shiftHumidity = seriesTemperature.data.length > 20;
+      shiftHumidity = seriesHumidity.data.length > 20;
 
     // EC
     var seriesEC = chartEC.series[0],
-      shiftEC = seriesTemperature.data.length > 20;
+      shiftEC = seriesEC.data.length > 20;
 
     // PH
     var seriesPH = chartPH.series[0],
-      shiftPH = seriesTemperature.data.length > 20;
+      shiftPH = seriesPH.data.length > 20;
 
     // Light
     var seriesLight = chartLight.series[0],
-      shiftLight = seriesTemperature.data.length > 20;
+      shiftLight = seriesLight.data.length > 20;
 
     // Add the Point
     // Time Temperature
@@ -60,7 +60,7 @@ function requestData() {
     data5.push(result[5]);
 
     chartPH.series[0].addPoint(data4, true, shiftPH);
-    chartTemperatue.series[0].addPoint(data1, true, shiftTemperature);
+    chartTemperature.series[0].addPoint(data1, true, shiftTemperature);
     chartHumidity.series[0].addPoint(data2, true, shiftHumidity);
     chartLight.series[0].addPoint(data5, true, shiftLight);
     chartEC.series[0].addPoint(data3, true, shiftEC);
@@ -102,13 +102,13 @@ $(document).ready(function () {
   });
 
   // --------------Chart 1 ----------------------------
-  chartTemperatue = new Highcharts.Chart({
+  chartTemperature = new Highcharts.Chart({
     chart: {
       renderTo: "data-temperature",
       defaultSeriesType: "area",
     },
     title: {
-      text: 'Ambient Temperature ("Temperature" Readings)',
+      text: 'Ambient Temperature (Temperature" Readings)',
     },
     xAxis: {
       type: "datetime",
@@ -125,8 +125,7 @@ $(document).ready(function () {
     },
     series: [
       {
-        color: "#c23d23",
-        lineColor: "#303030",
+        lineColor: "#1d82b8",
         name: "Temperature",
         data: [],
       },

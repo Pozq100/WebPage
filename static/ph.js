@@ -1,33 +1,35 @@
-var chartTemperature;
+var chartPH;
 
 function requestData() {
   // Ajax call to get the Data from Flask
   var requests = $.get("/data");
 
   var tm = requests.done(function (result) {
-    // Temperature
-    var seriesTemperature = chartTemperature.series[0],
-      shiftTemperature = seriesTemperature.data.length > 20;
+    // PH
+    var seriesPH = chartPH.series[0],
+      shiftPH = seriesPH.data.length > 20;
 
     // Add the Point
-    // Time Temperature
-    var data1 = [];
-    data1.push(result[0]);
-    data1.push(result[1]);
-    chartTemperature.series[0].addPoint(data1, true, shiftTemperature);
+    // Time PH
+    var data4 = [];
+    data4.push(result[0]);
+    data4.push(result[4]);
+
+    chartPH.series[0].addPoint(data4, true, shiftPH);
   });
+  // call it again after one second
   setTimeout(requestData, 500);
 }
 
 $(document).ready(function () {
-  // --------------Chart 1 ----------------------------
-  chartTemperature = new Highcharts.Chart({
+  // --------------Chart 4 -----------------------
+  chartPH = new Highcharts.Chart({
     chart: {
-      renderTo: "data-temperature",
+      renderTo: "data-PH",
       defaultSeriesType: "area",
     },
     title: {
-      text: 'Ambient Temperature ("Temperature" Readings)',
+      text: 'pH level of the solution ("Potentiometer" Readings)',
     },
     xAxis: {
       type: "datetime",
@@ -44,12 +46,12 @@ $(document).ready(function () {
     },
     series: [
       {
-        color: "#c23d23",
-        lineColor: "#303030",
-        name: "Temperature",
+        lineColor: "#1d82b8",
+        name: "PH Level",
         data: [],
       },
     ],
   });
+
   setTimeout(requestData, 500);
 });

@@ -1,33 +1,35 @@
-var chartTemperature;
+var chartHumidity;
 
 function requestData() {
   // Ajax call to get the Data from Flask
   var requests = $.get("/data");
 
   var tm = requests.done(function (result) {
-    // Temperature
-    var seriesTemperature = chartTemperature.series[0],
-      shiftTemperature = seriesTemperature.data.length > 20;
+    // Humidity
+    var seriesHumidity = chartHumidity.series[0],
+      shiftHumidity = seriesHumidity.data.length > 20;
 
     // Add the Point
-    // Time Temperature
-    var data1 = [];
-    data1.push(result[0]);
-    data1.push(result[1]);
-    chartTemperature.series[0].addPoint(data1, true, shiftTemperature);
+    // Time Humidity
+    var data2 = [];
+    data2.push(result[0]);
+    data2.push(result[2]);
+
+    chartHumidity.series[0].addPoint(data2, true, shiftHumidity);
   });
+  // call it again after one second
   setTimeout(requestData, 500);
 }
 
 $(document).ready(function () {
-  // --------------Chart 1 ----------------------------
-  chartTemperature = new Highcharts.Chart({
+  // --------------Chart 2 -----------------------
+  chartHumidity = new Highcharts.Chart({
     chart: {
-      renderTo: "data-temperature",
+      renderTo: "data-humidity",
       defaultSeriesType: "area",
     },
     title: {
-      text: 'Ambient Temperature ("Temperature" Readings)',
+      text: 'Relative Humidity ("Humidity" Readings)',
     },
     xAxis: {
       type: "datetime",
@@ -44,9 +46,8 @@ $(document).ready(function () {
     },
     series: [
       {
-        color: "#c23d23",
-        lineColor: "#303030",
-        name: "Temperature",
+        lineColor: "#1d82b8",
+        name: "Humidity",
         data: [],
       },
     ],

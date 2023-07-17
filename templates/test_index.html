@@ -2,13 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Test</title>
+    <title>DCPE-2A-04-Group1</title>
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Style for circle -->
@@ -20,42 +25,34 @@
         font-weight: bold;
       }
 
-      .jumbotron {
-        background-image: "url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Devops-toolchain.svg/640px-Devops-toolchain.svg.png";
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        height: 300px;
-        width: auto;
-        background-color: #f8f9fa;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-      }
-
-      .button-main {
-        font-size: 20px;
-      }
-
       #allGraphs {
-        font-size: 12px;
+        margin-top: 17px;
+        font-size: 18px;
+      }
+      .col-sm-2 > span,
+      .col-sm-2 > p {
+        display: inline-block;
+        color: white;
+        font-size: 19px;
+        margin-left: 7px;
+        margin-top: -50px;
+      }
+      #sys-running {
+        outline: gray;
+        border-bottom: 2px solid lightgray;
+        margin-left: -10px;
+        margin-right: -10px;
       }
     </style>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('static', filename='styles.css') }}"
-    />
   </head>
   <body>
     <div class="jumbotron">
-      <h1 class="text-center text-black" id="title">Welcome to</h1>
+      <img src="{{ url_for('static', filename='capture.png') }}" alt="Image" />
+      <h1 class="text-center text-black" id="title"></h1>
     </div>
-    <br />
-    <br />
     <div class="page-wrapper">
       <!-- Creating the circle -->
-      <div class="row">
+      <div class="row" id="sys-running">
         <div class="col-sm-2">
           <span><div class="circle"></div></span>
           <p>System Running</p>
@@ -94,85 +91,7 @@
       </form>
 
       <!-- JavaScript -->
-      <script>
-        class CustomImage {
-          constructor(imgUrl, size) {
-            this.imgUrl = imgUrl;
-            this.size = size;
-          }
-
-          backgroundImage() {
-            var img = document.querySelector(".jumbotron");
-            var text =
-              "margin:auto;" +
-              "background-image: url(" +
-              this.imgUrl +
-              ");" +
-              "background-size: cover;" +
-              "opacity: 1;" +
-              "background-blend-mode: darken;" +
-              "height: " +
-              this.size +
-              "vh;";
-
-            img.style.cssText = text;
-          }
-
-          centerTitle() {
-            var t1 = document.querySelector("#title");
-            t1.classList.add("text-black");
-            t1.classList.add("text-center");
-            t1.classList.add("display-3");
-          }
-        }
-
-        const imgUrl =
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Devops-toolchain.svg/640px-Devops-toolchain.svg.png";
-        const size = "25";
-        var obj = new CustomImage(imgUrl, size);
-        obj.backgroundImage();
-        obj.centerTitle();
-
-        function requestData() {
-          // Ajax call to get the Data from Flask
-          var requests = $.get("/data_current");
-
-          var tm = requests.done(function (result) {
-            if (result.length > 0) {
-              document.getElementById("pHGraph").innerText =
-                "Current pH level of the solution ('Potentiometer' readings): " +
-                result[4];
-              document.getElementById("TempGraph").innerText =
-                "Current Ambient Temperature ('Temperature' readings): " +
-                result[1];
-              document.getElementById("HumidGraph").innerText =
-                "Current Relative Humidity ('Humidity' readings): " + result[2];
-              document.getElementById("LightGraph").innerText =
-                "Current Ambient lighting intensity ('LDR' readings): " +
-                result[5];
-              document.getElementById("ECGraph").innerText =
-                "Current EC level ('Moisture sensor' readings): " + result[3];
-            } else {
-              // Handle the case when data is not available
-              document.getElementById("pHGraph").innerText =
-                "No data available";
-              document.getElementById("TempGraph").innerText =
-                "No data available";
-              document.getElementById("HumidGraph").innerText =
-                "No data available";
-              document.getElementById("LightGraph").innerText =
-                "No data available";
-              document.getElementById("ECGraph").innerText =
-                "No data available";
-            }
-          });
-
-          // call it again after one second
-          setTimeout(requestData, 500);
-        }
-
-        requestData();
-      </script>
+      <script src="{{ url_for('static', filename='test-index.js') }}"></script>
     </div>
   </body>
 </html>

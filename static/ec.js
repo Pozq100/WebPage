@@ -1,33 +1,35 @@
-var chartTemperature;
+var chartEC;
 
 function requestData() {
   // Ajax call to get the Data from Flask
   var requests = $.get("/data");
 
   var tm = requests.done(function (result) {
-    // Temperature
-    var seriesTemperature = chartTemperature.series[0],
-      shiftTemperature = seriesTemperature.data.length > 20;
+    // EC
+    var seriesEC = chartEC.series[0],
+      shiftEC = seriesEC.data.length > 20;
 
     // Add the Point
-    // Time Temperature
-    var data1 = [];
-    data1.push(result[0]);
-    data1.push(result[1]);
-    chartTemperature.series[0].addPoint(data1, true, shiftTemperature);
+    // Time EC
+    var data3 = [];
+    data3.push(result[0]);
+    data3.push(result[3]);
+
+    chartEC.series[0].addPoint(data3, true, shiftEC);
   });
+  // call it again after one second
   setTimeout(requestData, 500);
 }
 
 $(document).ready(function () {
-  // --------------Chart 1 ----------------------------
-  chartTemperature = new Highcharts.Chart({
+  // --------------Chart 3 -----------------------
+  chartEC = new Highcharts.Chart({
     chart: {
-      renderTo: "data-temperature",
+      renderTo: "data-EC",
       defaultSeriesType: "area",
     },
     title: {
-      text: 'Ambient Temperature ("Temperature" Readings)',
+      text: 'EC Level ("Moisture Sensor" Readings)',
     },
     xAxis: {
       type: "datetime",
@@ -44,9 +46,8 @@ $(document).ready(function () {
     },
     series: [
       {
-        color: "#c23d23",
-        lineColor: "#303030",
-        name: "Temperature",
+        lineColor: "#1d82b8",
+        name: "EC Level",
         data: [],
       },
     ],
