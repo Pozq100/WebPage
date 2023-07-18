@@ -1,13 +1,19 @@
-function requestData() {
-    var request = $.get("/switch-state");
+document.getElementById('switch-form').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the default form submission
 
-  var tm = request.done(function (result) {
-    if (result == 1) {
-        document.getElementById("switch").innerText
-    } else {
-        document.getElementById("switch").innerText
+  // Make an AJAX request to the server
+  $.ajax({
+    type: 'POST',
+    url: '/switch-state',
+    success: function(result) {
+      if (result == 1) {
+        document.getElementById("switch").innerText = "Say No";
+      } else if (result == -1) {
+        document.getElementById("switch").innerText = "Say Hello";
+      }
+    },
+    error: function(error) {
+      console.log(error);
     }
   });
-}
-
-requestData()
+});

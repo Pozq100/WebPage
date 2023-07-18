@@ -66,8 +66,8 @@
           <p>System Running</p>
         </div>
         <div>
-          <form action="/switch-state">
-            <button type="submit" id="switch">Toggle Switch</button>
+          <form action="/switch-state" id="switch-form">
+            <button type="submit" id="switch">Start/Stop</button>
           </form>
         </div>
       </div>
@@ -105,7 +105,7 @@
 
       <!-- JavaScript -->
       <script src="{{ url_for('static', filename='test-index.js') }}"></script>
-      <!--<script src="{{ url_for('static', filename='switch.js') }}"></script>-->
+      <script src="{{ url_for('static', filename='switch.js') }}"></script>
     </div>
   </body>
 </html>
