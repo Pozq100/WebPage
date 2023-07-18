@@ -7,9 +7,9 @@ document.getElementById('switch-form').addEventListener('submit', function(event
     url: '/switch-state',
     success: function(result) {
       if (result == 1) {
-        document.getElementById("switch").innerText = "Stop System";
+        document.getElementById("switch").innerText = "Start/Stop";
       } else if (result == -1) {
-        document.getElementById("switch").innerText = "Start System";
+        document.getElementById("switch").innerText = "Start/Stop";
       }
     },
     error: function(error) {
