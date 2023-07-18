@@ -63,7 +63,7 @@
       <div class="row" id="sys-running">
         <div class="col-sm-2">
           <span><div class="circle"></div></span>
-          <p>System Running</p>
+          <p id="sys-run-text">System Running</p>
         </div>
         <div>
           <form action="/switch-state" id="switch-form">
@@ -106,6 +106,7 @@
       <!-- JavaScript -->
       <script src="{{ url_for('static', filename='test-index.js') }}"></script>
       <script src="{{ url_for('static', filename='switch.js') }}"></script>
+      <script src="{{ url_for('static', filename='sys-run-text.js') }}"></script>
     </div>
   </body>
 </html>

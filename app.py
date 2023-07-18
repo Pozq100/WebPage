@@ -54,7 +54,7 @@ def light_html():
 @app.route('/data', methods=["GET", "POST"])
 def data():
     # Data Format
-    # [TIME, Temperature, Humidity]
+    # [TIME, Temperature, Humidity, EC, PH, Light]
     global line
     ListofDatas = DataGeneration.ReadLine(csvfile,line)
     if ListofDatas:
@@ -94,6 +94,13 @@ def switch_state():
     mainfile.main(state)
     response_switch = make_response(json.dumps(state))
     return response_switch
+
+@app.route('/get-switch-state', methods=["GET"])
+def get_switch_state():
+    global state
+    response = make_response(json.dumps(state))
+    return response
+
 
 if __name__ == "__main__":
     app.run(debug=True)
