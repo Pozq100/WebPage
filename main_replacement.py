@@ -1,7 +1,7 @@
 import random as rng
 import time
 from time import sleep
-
+import DataGeneration
 def main():
     while True:
         Temperature = round(rng.uniform(20, 40), 1)
@@ -9,7 +9,7 @@ def main():
         EC_level = round(rng.uniform(0, 1), 0)
         pH_level = round(rng.uniform(0, 14), 0)
         light_level = round(rng.uniform(0, 1023), 0)
-        print(Temperature,Humidity,EC_level,pH_level,light_level)
+        DataGeneration.DataGeneration(Temperature,Humidity,EC_level,pH_level,light_level)
         sleep(2)
 
 if __name__ == "__main__":

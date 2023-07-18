@@ -18,6 +18,11 @@ line = 3
 state = -1
 
 def start_code():
+    with open(csvfile,"w") as file:
+        writer = csv.writer(file)
+        Data = ["Time","Temperature","Humidity","EC_level","pH_level","light_level"]
+        writer.writerow(Data)
+
     global process
     if process is None:
         process = subprocess.Popen(["python", file_path])
