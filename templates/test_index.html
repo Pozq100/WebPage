@@ -55,7 +55,7 @@
   </head>
   <body>
     <div class="jumbotron">
-      <img src="{{ url_for('static', filename='capture.png') }}" alt="Image" />
+      <img src="{{ url_for('static', filename='devops.png') }}" alt="Image" />
       <h1 class="text-center text-black" id="title"></h1>
     </div>
     <div class="page-wrapper">
@@ -66,7 +66,7 @@
           <p>System Running</p>
         </div>
         <div>
-          <form action="/switch-state" method="POST">
+          <form action="/switch-state">
             <button type="submit" id="switch">Toggle Switch</button>
           </form>
         </div>
@@ -105,6 +105,7 @@
 
       <!-- JavaScript -->
       <script src="{{ url_for('static', filename='test-index.js') }}"></script>
+      <!--<script src="{{ url_for('static', filename='switch.js') }}"></script>-->
     </div>
   </body>
 </html>
