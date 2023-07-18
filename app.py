@@ -5,10 +5,28 @@ import csv
 from time import time
 import DataGeneration
 from flask import Flask, render_template, make_response
+import subprocess
+import os
+
+file_location = os.path.realpath(__file__)
+directory = os.path.dirname(file_location)
+file_path = os.path.join(directory, "main_replacement.py").replace("\\", "/")
+process = None
 app = Flask(__name__)
 csvfile = "Alldatas.csv"
 line = 3
 state = -1
+
+def start_code():
+    global process
+    if process is None:
+        process = subprocess.Popen(["python", file_path])
+
+def stop_code():
+    global process
+    if process is not None:
+        process.terminate()
+        process = None
 @app.route('/', methods=["GET", "POST"])
 def temp_html():
     global line
@@ -91,7 +109,10 @@ def data_current():
 def switch_state():
     global state
     state *= -1
-    mainfile.main(state)
+    if state == 1:
+        start_code()
+    if state == -1:
+        stop_code()
     response_switch = make_response(json.dumps(state))
     return response_switch
 
