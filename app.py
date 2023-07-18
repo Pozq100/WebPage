@@ -92,8 +92,9 @@ def switch_state():
     global state
     state *= -1
     while state == 1:
-        mainfile.main()
-    return state
+        print("hello")
+    response_switch = make_response(json.dumps(state))
+    return response_switch
 
 if __name__ == "__main__":
     app.run(debug=True)
