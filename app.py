@@ -1,5 +1,6 @@
 from flask import Flask,render_template,url_for,request,redirect, make_response
 import json
+import main_replacement as mainfile
 import csv
 from time import time
 import DataGeneration
@@ -7,6 +8,7 @@ from flask import Flask, render_template, make_response
 app = Flask(__name__)
 csvfile = "Alldatas.csv"
 line = 3
+state = -1
 @app.route('/', methods=["GET", "POST"])
 def temp_html():
     global line
@@ -85,11 +87,13 @@ def data_current():
     response.content_type = 'application/json'
     return response
 
-@app.route('/switch-state') #,methods=['GET', 'POST']
+@app.route('/switch-state', methods=["GET", "POST"])
 def switch_state():
-    print("hello")
-    return redirect('/')
+    global state
+    state *= -1
+    while state == 1:
+        mainfile.main()
+    return state
 
 if __name__ == "__main__":
     app.run(debug=True)
-
