@@ -14,15 +14,13 @@ file_path = os.path.join(directory, "main_replacement.py").replace("\\", "/")
 process = None
 app = Flask(__name__)
 csvfile = "Alldatas.csv"
-line = 3
 state = -1
-
+line = 3
 def start_code():
     with open(csvfile,"w") as file:
         writer = csv.writer(file)
         Data = ["Time","Temperature","Humidity","EC_level","pH_level","light_level"]
         writer.writerow(Data)
-
     global process
     if process is None:
         process = subprocess.Popen(["python", file_path])
@@ -35,43 +33,43 @@ def stop_code():
 @app.route('/', methods=["GET", "POST"])
 def temp_html():
     global line
-    line = 3
+    line = DataGeneration.LatestLine(csvfile)
     return render_template('test_index.html')
 
 @app.route('/index.html')
 def index_html():
     global line
-    line = 3
+    line = DataGeneration.LatestLine(csvfile)
     return render_template('index.html')
 
 @app.route('/temperature.html')
 def temperature_html():
     global line
-    line = 3
+    line = DataGeneration.LatestLine(csvfile)
     return render_template('temperature.html')
 
 @app.route('/humidity.html')
 def humidity_html():
     global line
-    line = 3
+    line = DataGeneration.LatestLine(csvfile)
     return render_template('humidity.html')
 
 @app.route('/ec.html')
 def ec_html():
     global line
-    line = 3
+    line = DataGeneration.LatestLine(csvfile)
     return render_template('ec.html')
 
 @app.route('/ph.html')
 def ph_html():
     global line
-    line = 3
+    line = DataGeneration.LatestLine(csvfile)
     return render_template('ph.html')
 
 @app.route('/light.html')
 def light_html():
     global line
-    line = 3
+    line = DataGeneration.LatestLine(csvfile)
     return render_template('light.html')
 
 @app.route('/data', methods=["GET", "POST"])
