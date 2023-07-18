@@ -91,10 +91,7 @@ def data_current():
 def switch_state():
     global state
     state *= -1
-    if state == 1:
-        print("hello")
-    if state == -1:
-        print("No")
+    mainfile.main(state)
     response_switch = make_response(json.dumps(state))
     return response_switch
 
