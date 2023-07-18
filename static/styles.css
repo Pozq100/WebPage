@@ -39,6 +39,9 @@ body{     /*Change Body Color*/
     background: rgb(0, 255, 0);
     margin-left: 10px;
   }  
+.circle.stopped {
+    background: rgb(255, 0, 0);
+  }
 button {
     border-radius: 7px;
     margin-top: 10px;
