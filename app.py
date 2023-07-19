@@ -10,7 +10,7 @@ import os
 
 file_location = os.path.realpath(__file__)
 directory = os.path.dirname(file_location)
-file_path = os.path.join(directory, "main_replacement.py").replace("\\", "/")
+file_path = os.path.join(directory, "main.py").replace("\\", "/")
 process = None
 app = Flask(__name__)
 csvfile = "Alldatas.csv"
