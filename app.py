@@ -1,6 +1,6 @@
 from flask import Flask,render_template,url_for,request,redirect, make_response
 import json
-import main_replacement as mainfile
+import temp_main as temp_main
 import csv
 from time import time
 import DataGeneration
@@ -10,7 +10,7 @@ import os
 
 file_location = os.path.realpath(__file__)
 directory = os.path.dirname(file_location)
-file_path = os.path.join(directory, "main.py").replace("\\", "/")
+file_path = os.path.join(directory, "temp_main.py").replace("\\", "/")
 process = None
 app = Flask(__name__)
 csvfile = "Alldatas.csv"
