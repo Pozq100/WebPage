@@ -1,6 +1,6 @@
 import DataGeneration
 
-csvfile = "Alldatas.csv"
+csvfile = "test_Alldatas.csv"
 def test_ReadLine():
     #line 5
     result = DataGeneration.ReadLine(csvfile,5)
