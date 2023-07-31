@@ -1,7 +1,9 @@
 import random as rng
 import csv
 import time
+import datetime
 csvfile = "Alldatas.csv"
+folder_id = "1ztWIVXy_3z2zNlTQaRnAoLNic0QcYZHR"
 
 def DataGeneration(Temperature, Humidity, EC_level, pH_level, light_level):
     Time = (time.time() + 28800000) * 1000
@@ -25,7 +27,7 @@ def ReadLine(csvfile,line):
         for _ in range(line - 1):
             next(reader)
         for i in next(reader):
-            data.append(float(i))      
+            data.append(float(i))
     return data
 
 def LatestLine(csvfile):
