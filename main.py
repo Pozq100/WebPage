@@ -34,12 +34,8 @@ def main():
     light_intensity_thread = Thread(target=light_intensity.main)
     ec_level_thread = Thread(target=ec_level.main)
     temperature_thread = Thread(target=temperature.main)
-    webpage_thread = Thread(target=DataGeneration)
-    webpage2_thread = Thread(target=app)
-    webpage2_thread.start()
     light_intensity_thread.start()
     ec_level_thread.start()
-    webpage_thread.start()
     temperature_thread.start()
 
     while True:

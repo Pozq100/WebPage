@@ -29,19 +29,31 @@
         margin-top: 17px;
         font-size: 18px;
       }
-      .col-sm-2 > span,
+      
+      .col-sm-2 > span {
+        margin-right: 5px;
+      }
       .col-sm-2 > p {
         display: inline-block;
         color: white;
         font-size: 19px;
-        margin-left: 7px;
-        margin-top: -50px;
+        margin-top: -5px;
+        flex-grow: 1;
       }
       #sys-running {
         outline: gray;
         border-bottom: 2px solid lightgray;
         margin-left: -10px;
         margin-right: -10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      #switch {
+        font-size: 18px;
+        margin-top: 0px;
+        margin-right: 10px;
+        margin-left: auto;
       }
     </style>
   </head>
@@ -55,7 +67,12 @@
       <div class="row" id="sys-running">
         <div class="col-sm-2">
           <span><div class="circle"></div></span>
-          <p>System Running</p>
+          <p id="sys-run-text">System Running</p>
+        </div>
+        <div>
+          <form action="/switch-state" id="switch-form">
+            <button type="submit" id="switch">Start/Stop</button>
+          </form>
         </div>
       </div>
 
@@ -92,6 +109,7 @@
 
       <!-- JavaScript -->
       <script src="{{ url_for('static', filename='test-index.js') }}"></script>
+      <script src="{{ url_for('static', filename='switch.js') }}"></script>
     </div>
   </body>
 </html>

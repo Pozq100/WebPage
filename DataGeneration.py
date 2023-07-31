@@ -1,7 +1,6 @@
 import random as rng
 import csv
 import time
-import app
 csvfile = "Alldatas.csv"
 
 def DataGeneration(Temperature, Humidity, EC_level, pH_level, light_level):
@@ -28,3 +27,15 @@ def ReadLine(csvfile,line):
         for i in next(reader):
             data.append(float(i))      
     return data
+
+def LatestLine(csvfile):
+    totallines = 0
+    with open(csvfile,"r") as file:
+        reader = csv.reader(file)
+        totallines = sum(1 for row in reader)
+    print(totallines)
+    if totallines > 20:
+        line = totallines - 20
+    else:
+        line = 3
+    return line
