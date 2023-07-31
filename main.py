@@ -30,7 +30,6 @@ def main():
     adc.init()
     moisture_sensor.init()
     temp_humid_sensor.init()
-    app.run(debug=True)
     light_intensity_thread = Thread(target=light_intensity.main)
     ec_level_thread = Thread(target=ec_level.main)
     temperature_thread = Thread(target=temperature.main)
@@ -43,9 +42,10 @@ def main():
         Temperature, Humidity = temperature_humidity_reading()
         light_level = ldr_reading()
         EC_level = moisture_reading()
-        DataGeneration.DataGeneration(Temperature, Humidity, EC_level, pH_level, light_level)
+        if Temperature != -100:
+            DataGeneration.DataGeneration(Temperature, Humidity, EC_level, pH_level, light_level)
         print(" ")
-        time.sleep(10)
+        time.sleep(3)
 
 if __name__ == '__main__':
     main()
