@@ -2,8 +2,7 @@ from hal import hal_moisture_sensor as moisture_sensor
 from hal import hal_servo as servo
 import time
 def optimal_ec(Moisture_sensor):
-    servo.init()
-    if Moisture_sensor:
+    if not Moisture_sensor:
         servo.set_servo_position(45)
         position = 45
     else:
