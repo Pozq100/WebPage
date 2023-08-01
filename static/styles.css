@@ -150,11 +150,3 @@ footer {
   text-align: center;
   padding: 10px;
 }
-#sys-running {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#sys-run-text {
-  margin-left: -350px;
-}
