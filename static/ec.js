@@ -9,10 +9,12 @@ function requestData() {
 
     if (result == 1) {
       sysRunText.innerText = "System Running";
+      circle.classList.add("started");
       circle.classList.remove("stopped");
     } else if (result == -1) {
       sysRunText.innerText = "System Stopped";
       circle.classList.add("stopped");
+      circle.classList.remove("started")
     }
   });
 

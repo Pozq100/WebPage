@@ -31,26 +31,28 @@ function requestData() {
 
     if (result == 1) {
       sysRunText.innerText = "System Running";
+      circle.classList.add("started");
       circle.classList.remove("stopped");
     } else if (result == -1) {
       sysRunText.innerText = "System Stopped";
       circle.classList.add("stopped");
+      circle.classList.remove("started")
     }
   });
 
   var tm = requests.done(function (result) {
     if (result.length > 0) {
       document.getElementById("pHGraph").innerText =
-        "Current pH level of the solution ('Potentiometer' readings): " +
+        "pH level of the solution: " +
         result[4];
       document.getElementById("TempGraph").innerText =
-        "Current Ambient Temperature ('Temperature' readings): " + result[1];
+        "Ambient Temperature ('Temperature' readings): " + result[1];
       document.getElementById("HumidGraph").innerText =
-        "Current Relative Humidity ('Humidity' readings): " + result[2];
+        "Relative Humidity ('Humidity' readings): " + result[2];
       document.getElementById("LightGraph").innerText =
-        "Current Ambient lighting intensity ('LDR' readings): " + result[5];
+        "Ambient lighting intensity ('LDR' readings): " + result[5];
       document.getElementById("ECGraph").innerText =
-        "Current EC level ('Moisture sensor' readings): " + result[3];
+        "EC level ('Moisture sensor' readings): " + result[3];
     } else {
       // Handle the case when data is not available
       document.getElementById("pHGraph").innerText = "No data available";

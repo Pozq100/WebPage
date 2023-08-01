@@ -34,7 +34,7 @@ def stop_code():
 def temp_html():
     global line
     line = DataGeneration.LatestLine(csvfile)
-    return render_template('test_index.html')
+    return render_template('s1.html')
 
 @app.route('/index.html')
 def index_html():

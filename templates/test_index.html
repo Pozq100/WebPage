@@ -29,7 +29,7 @@
         margin-top: 17px;
         font-size: 18px;
       }
-      
+
       .col-sm-2 > span {
         margin-right: 5px;
       }
@@ -54,6 +54,12 @@
         margin-top: 0px;
         margin-right: 10px;
         margin-left: auto;
+      }
+      #Test-Text {
+        align-items: left;
+        justify-content: left;
+        text-align: left;
+        font-size: 20px;
       }
     </style>
   </head>
@@ -82,7 +88,10 @@
       </form>
 
       <form action="/ph.html">
-        <button type="submit" id="pHGraph" class="button-main">pH Graph</button>
+        <button type="submit" class="button-main">
+          <div id="pHGraph">pH Graph</div>
+          <div id="Test-Text">['Potentiometer' Readings]</div>
+        </button>
       </form>
 
       <form action="/temperature.html">

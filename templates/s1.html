@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-
-    <title>EC Level Graph</title>
-
-    <!-- Bootstraps Java Scipts Links -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DCPE-2A-04-Group1</title>
+    <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -17,34 +16,10 @@
       type="text/css"
       href="{{ url_for('static', filename='styles.css') }}"
     />
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-    ></script>
-
-    <!-- JQuery links  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    <!--High CHART LIVE  -->
-    <script src="http://code.highcharts.com/highcharts.js"></script>
-    <script src="http://code.highcharts.com/highcharts-more.js"></script>
-    <script src="http://code.highcharts.com/modules/exporting.js"></script>
-    <!--Style for circle -->
     <style></style>
   </head>
-
-  <body id="graph">
+  <body>
     <header>
       <h1>Automated Gardening System</h1>
     </header>
@@ -55,6 +30,7 @@
           <form action="/">
             <input type="submit" style="display: none" id="HomeSubmit" />
             <a
+              style="color: white"
               class="btn"
               onclick="document.getElementById('HomeSubmit').click()"
               >Home</a
@@ -86,7 +62,6 @@
           <form action="/ec.html">
             <input type="submit" style="display: none" id="ECGraphSubmit" />
             <a
-              style="color: white"
               class="btn"
               onclick="document.getElementById('ECGraphSubmit').click()"
             >
@@ -131,22 +106,56 @@
         </li>
       </ul>
     </nav>
-    <!--Creating the circle -->
-    <div class="row" id="sys-running">
-      <div class="col-sm-2">
-        <span><div class="circle"></div></span>
-        <p id="sys-run-text">Detecting System</p>
-      </div>
-    </div>
-    <div class="page-wrapper-graph">
-      <div class="container-fluid">
-        <!-- Example row of columns -->
-        <div class="row">
-          <div class="container-fluid" id="data-EC"></div>
+
+    <div class="jumbotron">
+      <div>
+        <h1>Welcome to Our Website</h1>
+        <p>We offer literally nothing</p>
+        <div class="row" id="sys-running">
+          <div class="col-sm-2">
+            <span>
+              <div class="circle"></div>
+            </span>
+          </div>
+          <div class="col-sm-10">
+            <span>
+              <div id="sys-run-text">Detecting System</div>
+            </span>
+          </div>
         </div>
       </div>
     </div>
 
-    <script src="{{ url_for('static', filename='ec.js') }}"></script>
+    <div class="container">
+      <h2>About Us</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+    </div>
+
+    <div class="container">
+      <h2>Our Services</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+    </div>
+
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+    </div>
+
+    <footer>
+      <p>&copy; 2023 Automated Gardening System. DCPE-FT-2A-04 Group 1.</p>
+    </footer>
+
+    <!--JavaScript-->
+    <script src="{{ url_for('static', filename='s1.js') }}"></script>
+    <script src="{{ url_for('static', filename='switch.js') }}"></script>
   </body>
 </html>
