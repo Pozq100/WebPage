@@ -10,7 +10,7 @@ import os
 
 file_location = os.path.realpath(__file__)
 directory = os.path.dirname(file_location)
-file_path = os.path.join(directory, "main.py").replace("\\", "/")
+file_path = os.path.join(directory, "temp_main.py").replace("\\", "/")
 process = None
 app = Flask(__name__)
 csvfile = "Alldatas.csv"
@@ -34,7 +34,7 @@ def stop_code():
 def temp_html():
     global line
     line = DataGeneration.LatestLine(csvfile)
-    return render_template('s1.html')
+    return render_template('home.html')
 
 @app.route('/index.html')
 def index_html():

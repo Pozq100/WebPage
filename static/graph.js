@@ -7,7 +7,7 @@ var chartLight;
 function requestData() {
   // Ajax call to get the Data from Flask
   var requests = $.get("/data");
-  $.get("/get-switch-state", function(result) {
+  $.get("/get-switch-state", function (result) {
     var sysRunText = document.getElementById("sys-run-text");
     var circle = document.querySelector(".circle");
 
@@ -18,7 +18,7 @@ function requestData() {
     } else if (result == -1) {
       sysRunText.innerText = "System Stopped";
       circle.classList.add("stopped");
-      circle.classList.remove("started")
+      circle.classList.remove("started");
     }
   });
 
@@ -43,32 +43,22 @@ function requestData() {
     var seriesLight = chartLight.series[0],
       shiftLight = seriesLight.data.length > 20;
 
-    // Add the Point
-    // Time Temperature
     var data1 = [];
     data1.push(result[0]);
     data1.push(result[1]);
 
-    // Add the Point
-    // Time Humidity
     var data2 = [];
     data2.push(result[0]);
     data2.push(result[2]);
 
-    // Add the Point
-    // Time EC
     var data3 = [];
     data3.push(result[0]);
     data3.push(result[3]);
 
-    // Add the Point
-    // Time PH
     var data4 = [];
     data4.push(result[0]);
     data4.push(result[4]);
 
-    // Add the Point
-    // Time Light
     var data5 = [];
     data5.push(result[0]);
     data5.push(result[5]);
@@ -79,7 +69,7 @@ function requestData() {
     chartLight.series[0].addPoint(data5, true, shiftLight);
     chartEC.series[0].addPoint(data3, true, shiftEC);
   });
-  // call it again after one second
+
   setTimeout(requestData, 500);
 }
 

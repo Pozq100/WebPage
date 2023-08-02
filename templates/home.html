@@ -17,7 +17,38 @@
       href="{{ url_for('static', filename='styles.css') }}"
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <style></style>
+    <style>
+      #sys-running {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        display: flex;
+        align-items: center;
+      }
+      .jumbotron {
+        position: relative;
+      }
+      .col-sm-2 {
+        flex-wrap: nowrap;
+      }
+      .circle {
+        margin-right: 10px;
+      }
+      .btn-startstop {
+        background-color: #007bff;
+        color: #fff;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        text-transform: uppercase;
+        transition: background-color 0.3s ease;
+      }
+      .btn-startstop:hover {
+        background-color: #0056b3;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -76,7 +107,7 @@
               class="btn"
               onclick="document.getElementById('pHGraphSubmit').click()"
             >
-              <div id="pHGraph">pH Graph</div>
+              Potentiometer
             </a>
           </form>
         </li>
@@ -110,44 +141,33 @@
     <div class="jumbotron">
       <div>
         <h1>Welcome to Our Website</h1>
-        <p>We offer literally nothing</p>
-        <div class="row" id="sys-running">
-          <div class="col-sm-2">
-            <span>
-              <div class="circle"></div>
-            </span>
+        <div id="sys-running">
+          <div class="circle"></div>
+          <div id="sys-run-text" style="font-size: 17px; margin-right: 10px">
+            Detecting System
           </div>
-          <div class="col-sm-10">
-            <span>
-              <div id="sys-run-text">Detecting System</div>
-            </span>
-          </div>
+          <form action="/switch-state" id="switch-form">
+            <input type="submit" style="display: none" id="StartStopSubmit" />
+            <a
+              class="btn-startstop"
+              onclick="document.getElementById('StartStopSubmit').click()"
+            >
+              Start/Stop
+            </a>
+          </form>
         </div>
       </div>
     </div>
 
     <div class="container">
-      <h2>About Us</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </p>
-    </div>
-
-    <div class="container">
-      <h2>Our Services</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </p>
-    </div>
-
-    <div class="container">
-      <h2>Contact Us</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </p>
+      <h2 style="font-weight: bold">Current Readings:</h2>
+      <div class="page-wrapper" id="main-page-text">
+        <div id="TempGraph">Temperature Readings:</div>
+        <div id="HumidGraph">Humidity Readings:</div>
+        <div id="ECGraph">EC Level:</div>
+        <div id="pHGraph">Potentiometer Readings:</div>
+        <div id="LightGraph">LDR Readings:</div>
+      </div>
     </div>
 
     <footer>
